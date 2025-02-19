@@ -1,8 +1,10 @@
 <template>
   <td
-    :style="{ padding: '0px', verticalAlign: 'inherit', textTransform: transform, fontSize: '10.5px', color: fontColor, textAlign: alignment }">
-    {{ cellvalue }}</td>
+    :style="{ padding: '0px', verticalAlign: 'inherit', textTransform: textTransform, fontSize: '10.5px', color: color, textAlign: textAlignment }">
+    {{ title }}
+  </td>
 </template>
+
 <script>
 export default {
   name: 'SummaryTableCellComponent',
@@ -11,7 +13,7 @@ export default {
       type: String,
       required: true
     },
-    textTrandform: {
+    textTransform: {
       type: String,
       default: 'uppercase',
     },
@@ -22,14 +24,6 @@ export default {
     color: {
       type: String,
       default: 'var(--font-color)'
-    }
-  },
-  setup(props) {
-    return {
-      cellvalue: props.title,
-      transform: props.textTrandform,
-      alignment: props.textAlignment,
-      fontColor: props.color
     }
   }
 }

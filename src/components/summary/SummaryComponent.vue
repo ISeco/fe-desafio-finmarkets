@@ -1,16 +1,11 @@
 <template>
-  <div class="summary-container">
-    <div class="tab-container">
+  <div style="display: flex; flex-direction: column;">
+    <div style="margin-bottom: 8px;">
       <uk-tab>
-        <button
-          class="uk-button uk-button-default uk-button-small tab-button"
-          v-for="tab in tabs"
-          :key="tab"
-          @click="currentTab = tab"
-          :class="{ active: tab === currentTab }"
-        >
-          {{ tab }}
-        </button>
+        <button class="uk-button uk-button-default uk-button-small"
+          style="color: var(--font-color); border: none; padding: 20px; border-bottom: 1px solid #e5e5e5; text-transform: capitalize;"
+          v-for="tab in tabs" :key="tab" @click="currentTab = tab"
+          :style="{ borderBottom: tab === currentTab ? '2px solid #87BAFF' : '1px solid #e5e5e5' }">{{ tab }}</button>
       </uk-tab>
     </div>
     <div>
@@ -27,27 +22,15 @@
         <tbody>
           <tr>
             <SummaryTableCellComponent :title="'1 Mes'" />
-            <SummaryTableCellComponent
-              :title="pct30D + '%'"
-              :text-alignment="'end'"
-              :color="'var(--text-color-green)'"
-            />
+            <SummaryTableCellComponent :title="pct30D + '%'" :text-alignment="'end'" :color="'var(--text-color-green)'" />
           </tr>
           <tr>
             <SummaryTableCellComponent :title="'1 Año'" />
-            <SummaryTableCellComponent
-              :title="pctRelW52 + '%'"
-              :text-alignment="'end'"
-              :color="'var(--text-color-green)'"
-            />
+            <SummaryTableCellComponent :title="pctRelW52 + '%'" :text-alignment="'end'" :color="'var(--text-color-green)'" />
           </tr>
           <tr>
             <SummaryTableCellComponent :title="'Año a la fecha'" />
-            <SummaryTableCellComponent
-              :title="pctRelCY + '%'"
-              :text-alignment="'end'"
-              :color="'var(--text-color-green)'"
-            />
+            <SummaryTableCellComponent :title="pctRelCY + '%'" :text-alignment="'end'" :color="'var(--text-color-green)'" />
           </tr>
         </tbody>
       </table>
@@ -55,52 +38,41 @@
   </div>
 </template>
 
-<script setup>
-import { ref, computed, watch } from 'vue';
+<script>
 import { useInstrumentStore } from '@/store/instrumentStore';
-import SummaryTableComponent from './SummaryTableComponent.vue';
-import SummaryTableHeadComponent from './SummaryTableHeadComponent.vue';
-import SummaryTableCellComponent from './SummaryTableCellComponent.vue';
+import SummaryTableComponent from './SummaryTableComponent.vue'
+import SummaryTableHeadComponent from './SummaryTableHeadComponent.vue'
+import SummaryTableCellComponent from './SummaryTableCellComponent.vue'
 import { formatNumber } from '@/utilities/numberMask';
 
-const tabs = ["Resumen", "Detalles"];
-const currentTab = ref('Detalles');
-
-const instrumentStore = useInstrumentStore();
-const selectedInstrument = ref(null);
-
-watch(
-  () => instrumentStore.getSelectedInstrument,
-  (newVal) => {
-    if (newVal) selectedInstrument.value = newVal;
+export default {
+  name: 'SummaryComponent',
+  components: { SummaryTableComponent, SummaryTableHeadComponent, SummaryTableCellComponent },
+  data() {
+    return {
+      tabs: ["Resumen", "Detalles"],
+      currentTab: 'Detalles'
+    }
   },
-  { immediate: true }
-);
-
-const pct30D = computed(() => formatNumber(selectedInstrument.value?.price?.pct30D ?? 0));
-const pctRelW52 = computed(() => formatNumber(selectedInstrument.value?.price?.pctRelW52 ?? 0));
-const pctRelCY = computed(() => formatNumber(selectedInstrument.value?.price?.pctRelCY ?? 0));
+  computed: {
+    instrument() {
+      const store = useInstrumentStore()
+      return store.getSelectedInstrument
+    },
+    pct30D() {
+      return this.onFormatNumber(this.instrument?.price?.pct30D || 0);
+    },
+    pctRelW52() {
+      return this.onFormatNumber(this.instrument?.price?.pctRelW52 || 0);
+    },
+    pctRelCY() {
+      return this.onFormatNumber(this.instrument?.price?.pctRelCY || 0);
+    }
+  },
+  methods: {
+    onFormatNumber(value) {
+      return formatNumber(value);
+    }
+  },
+}
 </script>
-
-<style scoped>
-.summary-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.tab-container {
-  margin-bottom: 8px;
-}
-
-.tab-button {
-  color: var(--font-color);
-  border: none;
-  padding: 20px;
-  border-bottom: 1px solid #e5e5e5;
-  text-transform: capitalize;
-}
-
-.tab-button.active {
-  border-bottom: 2px solid #87BAFF;
-}
-</style>

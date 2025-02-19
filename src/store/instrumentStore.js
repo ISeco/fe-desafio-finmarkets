@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useInstrumentStore = defineStore('instrumentStore', {
   state: () => ({
-    selectedInstrument: null,
+    selectedInstrument: {},
     instruments: [],
     summary: {},
     chart: [],
@@ -15,12 +15,16 @@ export const useInstrumentStore = defineStore('instrumentStore', {
     },
     async loadSummaryByName(name) {
       this.summary = await getSummaryByName(name).then((response) => {
+        if (!response) return
         this.setSelectedInstrument(response.data)
         return response.data
       })
     },
     async loadChartByName(name) {
-      this.chart = await getHistoryByName(name).then((response) => response.data.chart)
+      this.chart = await getHistoryByName(name).then((response) => {
+        if (!response) return this.chart;
+        return response.data.chart
+      })
     },
     setSelectedInstrument(instrument) {
       this.selectedInstrument = instrument

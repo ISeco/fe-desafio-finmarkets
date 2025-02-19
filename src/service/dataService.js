@@ -6,9 +6,11 @@ export async function getConstituyentes() {
 export async function getSummaryByName(name) {
   const validNames = ["AGUAS-A", "ANDINA-B", "BCI", "BSANTANDER", "CAP", "IPSA"];
 
-  if (!validNames.includes(name)) return {};
+  if (!validNames.includes(name)) return;
 
   const data = await import(`@/mockData/resumen/${name}.json`);
+
+  if (!data) return {};
 
   return data;
 }
@@ -16,9 +18,11 @@ export async function getSummaryByName(name) {
 export async function getHistoryByName(name) {
   const validNames = ["AGUAS-A", "ANDINA-B", "BCI", "BSANTANDER", "CAP", "IPSA"];
 
-  if (!validNames.includes(name)) return {};
+  if (!validNames.includes(name)) return;
 
   const data = await import(`@/mockData/history/history-${name}.json`);
+
+  if (!data) return {};
 
   return data;
 }
