@@ -22,15 +22,18 @@
         <tbody>
           <tr>
             <SummaryTableCellComponent :title="'1 Mes'" />
-            <SummaryTableCellComponent :title="pct30D + '%'" :text-alignment="'end'" :color="'var(--text-color-green)'" />
+            <SummaryTableCellComponent :title="pct30D + '%'" :text-alignment="'end'"
+              :color="parseFloat(pct30D) < 0 ? 'var(--text-color-red) !important' : 'var(--text-color-green) !important'" />
           </tr>
           <tr>
             <SummaryTableCellComponent :title="'1 Año'" />
-            <SummaryTableCellComponent :title="pctRelW52 + '%'" :text-alignment="'end'" :color="'var(--text-color-green)'" />
+            <SummaryTableCellComponent :title="pctRelW52 + '%'" :text-alignment="'end'"
+              :color="parseFloat(pctRelW52) < 0 ? 'var(--text-color-red) !important' : 'var(--text-color-green) !important'" />
           </tr>
           <tr>
             <SummaryTableCellComponent :title="'Año a la fecha'" />
-            <SummaryTableCellComponent :title="pctRelCY + '%'" :text-alignment="'end'" :color="'var(--text-color-green)'" />
+            <SummaryTableCellComponent :title="pctRelCY + '%'" :text-alignment="'end'"
+              :color="parseFloat(pctRelCY) < 0 ? 'var(--text-color-red) !important' : 'var(--text-color-green) !important'" />
           </tr>
         </tbody>
       </table>
