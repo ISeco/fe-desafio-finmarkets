@@ -11,7 +11,7 @@
           {{ period }}
         </button>
       </div>
-      <button class="uk-button uk-button-default uk-button-small button-period radius-4" @click="updatePeriod('5A')">
+      <button class="uk-button uk-button-default uk-button-small button-period radius-4">
         <CalendarIcon :widthIcon="16" :heightIcon="16" />
       </button>
     </div>
