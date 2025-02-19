@@ -27,6 +27,7 @@ jobs:
         run: npm run build
         
   Deploy-Production:
+    needs: Build
     permissions:
       contents: 'read'
       id-token: 'write'
