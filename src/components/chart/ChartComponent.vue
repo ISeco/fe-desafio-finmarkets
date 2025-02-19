@@ -61,6 +61,9 @@ export default {
           height: 350,
           zoom: {
             autoScaleYaxis: true
+          },
+          toolbar: {
+            show: false,
           }
         },
         dataLabels: {
@@ -84,6 +87,7 @@ export default {
           },
         },
         tooltip: {
+          theme: 'dark',
           x: {
             format: 'dd MMM yyyy'
           }
