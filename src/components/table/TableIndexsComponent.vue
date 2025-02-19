@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <tr v-for="instrument in instruments" :key="instrument.id">
-        <TableCellIndex :cell-data="instrument.shortName" />
+        <TableCellIndex :cell-data="instrument.shortName" :cursorPointer="true" @click="() => setSelectedInstrument(instrument.shortName)"  />
         <TableCellIndex :cell-data="instrument.lastPrice" />
         <TableCellIndex :cell-data="instrument.volumeMoney" />
         <TableCellIndex :cell-data="instrument.pctDay"
@@ -30,17 +30,28 @@
 </template>
 
 <script>
+import { useInstrumentStore } from '@/store/instrumentStore';
 import TableCellIndex from './TableCellIndexComponent.vue'
 import TableHeadIndex from './TableHeadIndexComponent.vue'
 
 export default {
   name: 'TableIndexs',
   components: { TableCellIndex, TableHeadIndex },
+  setup() {
+    const instrumentStore = useInstrumentStore()
+    return { instrumentStore }
+  },
   props: {
     instruments: {
       type: Array,
       required: true
     }
   },
+  methods: {
+    setSelectedInstrument(instrument) {
+      this.instrumentStore.loadSummaryByName(instrument)
+      this.instrumentStore.loadChartByName(instrument)
+    }
+  }
 }
 </script>

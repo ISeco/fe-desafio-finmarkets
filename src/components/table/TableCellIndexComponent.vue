@@ -1,5 +1,5 @@
 <template>
-  <td class="table-cell-custom" :style="{ color: fontColor }">
+  <td class="table-cell-custom" :style="{ color: fontColor, cursor: cursorPointer ? 'pointer' : 'default' }">
     {{ formattedCellData }}{{ percentageSign }}
   </td>
 </template>
@@ -18,6 +18,10 @@ export default {
     fontColor: {
       type: String,
       default: 'var(--font-color)'
+    },
+    cursorPointer: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
