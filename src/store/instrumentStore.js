@@ -1,4 +1,4 @@
-import { getConstituyentes, getHistoryByName, getSummaryByName } from '@/service/dataService'
+import { getConstituyentes, getHistoryByName, getSummaryByName } from '../service/dataService'
 import { defineStore } from 'pinia'
 
 export const useInstrumentStore = defineStore('instrumentStore', {
