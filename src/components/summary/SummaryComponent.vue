@@ -57,7 +57,7 @@ export default {
   computed: {
     instrument() {
       const store = useInstrumentStore()
-      return store.getSelectedInstrument
+      return store.getSummary
     },
     pct30D() {
       return this.onFormatNumber(this.instrument?.price?.pct30D || 0);

@@ -53,31 +53,31 @@ export default {
       return useInstrumentStore().getSummary
     },
     openPrice() {
-      return this.onFormatNumber(this.selectedInstrument.price?.openPrice);
+      return this.onFormatNumber(this.selectedInstrument?.price?.openPrice);
     },
     lastPrice() {
-      return this.onFormatNumber(this.selectedInstrument.price?.lastPrice);
+      return this.onFormatNumber(this.selectedInstrument?.price?.lastPrice);
     },
     maxDay() {
-      return this.onFormatNumber(this.selectedInstrument.price?.maxDay);
+      return this.onFormatNumber(this.selectedInstrument?.price?.maxDay);
     },
     minDay() {
-      return this.onFormatNumber(this.selectedInstrument.price?.minDay);
+      return this.onFormatNumber(this.selectedInstrument?.price?.minDay);
     },
     max52Weeks() {
-      return this.onFormatNumber(this.selectedInstrument.price?.max52W);
+      return this.onFormatNumber(this.selectedInstrument?.price?.max52W);
     },
     min52Weeks() {
-      return this.onFormatNumber(this.selectedInstrument.price?.min52W);
+      return this.onFormatNumber(this.selectedInstrument?.price?.min52W);
     },
     pct30D() {
-      return this.selectedInstrument.price?.pct30D;
+      return this.selectedInstrument?.price?.pct30D;
     },
     pctRelW52() {
-      return this.selectedInstrument.price?.pctRelW52;
+      return this.selectedInstrument?.price?.pctRelW52;
     },
     pctRelCY() {
-      return this.selectedInstrument.price?.pctRelCY;
+      return this.selectedInstrument?.price?.pctRelCY;
     }
   },
   methods: {
