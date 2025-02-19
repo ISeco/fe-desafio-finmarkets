@@ -1,0 +1,16 @@
+.table-cell-custom {
+  padding: 0px 5px !important;
+  vertical-align: inherit !important;
+  text-transform: uppercase !important;
+  font-size: 10.5px !important;
+  color: var(--font-color) !important;
+  text-align: start !important;
+}
+
+.table-head-custom {
+  vertical-align: inherit !important;
+  text-align: start !important;
+  text-transform: capitalize !important;
+  font-size: 12px !important;
+  color: var(--font-color) !important;
+}

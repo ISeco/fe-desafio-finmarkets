@@ -1,0 +1,22 @@
+.search-bar-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  padding: 20px 0px 0px 0px;
+}
+
+.search-bar {
+  background-color: var(--search-bar-bg-color) !important;
+  border-radius: 5px !important;
+  border: 1px solid var(--search-bar-border-color) !important;
+  color: var(--search-bar-text-color) !important;
+  padding-left: 40px !important;
+}
+
+.search-icon {
+  position: absolute;
+  display: inline-flex;
+  margin: 10px;
+  color: var(--font-color);
+}

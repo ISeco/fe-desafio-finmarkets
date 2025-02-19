@@ -1,0 +1,44 @@
+:root {
+  --primary-color: #101010;
+  --font-color: #FFFF;
+  --search-bar-bg-color: #1F2023;
+  --search-bar-border-color: #FFFFFF29;
+  --search-bar-text-color: #FFFFFF80;
+  --divider-color: #ffffff3f;
+  --button-period-color: #1F2023;
+  --border-button-period-color: #ffffff1a;
+  --text-color-green: #00E175;
+  --text-color-red: #F56069;
+  --period-active: #549CFF;
+  --emphasis-base-high: #000000ff;
+}
+
+body {
+  color: var(--font-color);
+  font-family: Moderat,Helvetica Neue,Arial,sans-serif !important;
+  height: 100%;
+}
+
+#app {
+  background-color: var(--primary-color);
+  text-align: center;
+  height: 100%;
+}
+
+h1, h2, h3 {
+  color: var(--font-color);
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.divider {
+  background-color: var(--divider-color);
+  height: 1px;
+  width: 100%;
+}
+
+.radius-4 {
+  border-radius: 4px !important;
+}
